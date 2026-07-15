@@ -1,44 +1,43 @@
-Exam Cheating Detection System
+# Exam Cheating Detection System
 
 A desktop application that monitors students during exams using a live
 camera or recorded video, detecting suspicious behavior such as phone use
 through real-time object detection and tracking.
 
-Features
+## Features
 
+- Real-time detection using YOLOv8
+- Persistent student tracking with ByteTrack (each student keeps a stable ID)
+- Automatic alerts when a phone is detected in a student's hand
+- Screenshot capture for every alert
+- SQLite database logging of all alerts
+- Desktop notifications
+- Dark-themed desktop interface built with CustomTkinter
 
-Real-time detection using YOLOv8
-Persistent student tracking with ByteTrack (each student keeps a stable ID)
-Automatic alerts when a phone is detected in a student's hand
-Screenshot capture for every alert
-SQLite database logging of all alerts
-Desktop notifications
-Dark-themed desktop interface built with CustomTkinter
+## Requirements
 
+- Python 3.10+
+- A webcam (for live detection) or video files (for offline analysis)
 
-Requirements
+## Installation
 
+```bash
+pip install -r requirements.txt
+```
 
-Python 3.10+
-A webcam (for live detection) or video files (for offline analysis)
+## Usage
 
+```bash
+python main.py
+```
 
-Installation
+- Click **Start Detection** to use the live camera
+- Or click **Upload Video** first to analyze a recorded video, then **Start Detection**
+- Click **Stop Detection** to end the session
 
-bashpip install -r requirements.txt
+## Project Structure
 
-Usage
-
-bashpython main.py
-
-
-Click Start Detection to use the live camera
-Or click Upload Video first to analyze a recorded video, then Start Detection
-Click Stop Detection to end the session
-
-
-Project Structure
-
+```
 cheating_alert_system/
 ├── main.py                      # Application entry point and controller
 ├── requirements.txt
@@ -58,19 +57,18 @@ cheating_alert_system/
     ├── utils/logger.py
     ├── utils/screenshot.py
     └── ui/main_window.py         # Desktop UI
+```
 
-How It Works
+## How It Works
 
+1. Each frame from the camera or video is passed to the YOLO model, which
+   detects people and objects (such as phones) and assigns each person a
+   persistent tracking ID.
+2. The behavior analyzer checks whether a detected phone overlaps with a
+   student's hand region.
+3. If suspicious behavior is detected, the system logs the event to the
+   database, saves a screenshot, and sends a desktop notification.
 
-Each frame from the camera or video is passed to the YOLO model, which
-detects people and objects (such as phones) and assigns each person a
-persistent tracking ID.
-The behavior analyzer checks whether a detected phone overlaps with a
-student's hand region.
-If suspicious behavior is detected, the system logs the event to the
-database, saves a screenshot, and sends a desktop notification.
-
-
-License
+## License
 
 This project is for educational purposes.
