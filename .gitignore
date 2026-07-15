@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.vscode/
+data/screenshots/*.jpg
+data/logs/*.log
+data/database/*.db
+data/videos/*
+venv/
+env/

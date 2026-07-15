@@ -1,0 +1,11 @@
+{
+    "model_path": "assets/models/yolov8n.pt",
+    "confidence_threshold": 0.5,
+    "iou_threshold": 0.45,
+    "notifications_enabled": true,
+    "theme": "dark",
+    "save_screenshots": true,
+    "screenshot_dir": "data/screenshots",
+    "database_path": "data/database/cheating_alerts.db",
+    "video_output_fps": 30
+}
